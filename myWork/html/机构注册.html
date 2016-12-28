@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<title>机构注册</title>
+	
+	<link rel="stylesheet" type="text/css" href="../css/global.css?rev=@@hash">
+	<link rel="stylesheet" type="text/css" href="../css/me_main.css?rev=@@hash">
+
+	<script type="text/javascript" src="../js/jquery-1.8.3.min.js?rev=@@hash"></script>
+</head>
+<body>
+<div>
+	<header class="me_header me_nav">
+		<div class="container fn">
+			<div class="navbar-header">  
+		    	<button type="button"  class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>	
+		        </button>	
+		        <a class="navbar-logo" href="#">
+					 <img alt="Brand" src="../img/me_logo.png">
+			    </a> 
+			    
+		    </div>
+			<div class="me_list collapse navbar-collapse fr"  id="bs-example-navbar-collapse-1">
+				<a href="#">首页</a>
+				<a href="#">教育机构版</a>
+				<a href="#">常见问题</a>
+				<a href="#">互动讨论</a>
+				<a class="a_log" href="#">教师登录</a>
+				<a class="a_log" href="#">机构登录</a>
+				<a class="a_log" href="#">学生登录</a>
+			</div>   
+			<a href="#" class="close click_tracking" data-label="Close header menu" tabindex="1"></a>
+		</div>
+	</header>
+
+	<div class="me_content">
+		<div class="container">
+			<div class="me_form form_register fl">
+				<form class="form1">
+					<h4>机构管理平台申请</h4>				
+					<p>
+						<input type="text" id="weixinCode" placeholder="微信公众号">
+						<span class="strMess">公众号不得为空</span>
+					</p>
+					<p>
+						<input type="text" id="schoolName" placeholder="机构（学校）名称">
+						<span class="strMess">学校名称不得为空</span>
+					</p>	
+					<p>
+						<input type="text" id="schoolDress" placeholder="机构（学校）地址">
+						<span class="strMess">学校地址不得为空</span>
+					</p>
+					<hr>
+					<p>
+						<input type="text" id="lixiPerson" placeholder="联系人">
+						<span class="strMess">联系人不得为空</span>
+					</p>
+					<p>
+						<input type="tel" id="tel"  placeholder="联系电话">
+						<span class="strMess">请填写正确的电话</span>
+					</p>
+					<hr>
+					<p>
+						<input type="email" id="email"  placeholder="电子邮箱">
+						<span class="strMess">请填写正确的邮箱</span>
+					</p>
+					<p>
+						<input class="inp_yzm" type="text" id="yzm" placeholder="验证码"> 
+						<a href="#" class="inp_code"></a>
+						<span class="strMess">请填写验证码</span>
+					</p>
+					<p class="me_p">
+						<a class="login_btn" href="#">注&nbsp;&nbsp;&nbsp;册</a>
+					</p>
+					
+				</form>
+				<div class="me_div"></div>
+			</div>
+			<div class="me_info heigh fr">
+				<h4>注册提示</h4>
+				<p>麦学习作业平台对教师免费，如果您已经注册请点去登录吧。</p>
+				<div><a href="#" class="me_regster">登&nbsp;&nbsp;&nbsp;录</a></div>
+				<p class="me_mess">
+					官方交流群：439294187<br>
+					不会操作？向客服提问，跟其他老师取经！想开通主观题更多功
+					能？快快来加群！
+				</p>
+			</div>
+		</div>
+		
+	</div>
+
+	<footer class="footer foot">
+		<div class="me_footer"><img src="../images/me_footer_logo.png"></div>
+		<p>
+			<a href="#">关于我们</a></li>|
+			<a href="#">加入我们</a></li>|
+			<a href="#">问题反馈</a></li>
+		</p>
+		<p class="me_p_1">
+			<span>友情链接：</span>
+			<a href="#">亲子早教</a>
+			<a href="#">试题库</a>
+		</p>
+		<p>市场合作：mstudy@m-cookies.com &nbsp;客服电话：027-87298233（工作时间09-18:00）&nbsp;公司地址：武汉市东湖西路114号景天楼2-11-2室</p>
+		<p class="me_p1"><span>©2015&nbsp;麦学习作业&nbsp;WWW.MSTUDY.ME&nbsp;&nbsp;鄂ICP备12001098</span></p>
+	</footer>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		
+		$(".navbar-toggle").bind('click', function() {
+
+			$(".me_list").fadeIn('200');
+			$(".click_tracking").show();
+		});
+
+		$(".click_tracking").bind('click', function() {
+			$(this).hide();
+			$(".me_list").fadeOut('200');
+		});
+	});
+</script>	
+</body>
+</html>
