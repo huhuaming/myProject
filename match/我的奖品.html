@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>我的奖品</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/global.css"type="text/css" />
+	<link rel="stylesheet" href="css/zc_main.css" type="text/css" />
+	<link rel="stylesheet" href="css/jquery.jscrollpane.css" media="all">
+
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+	<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+<script>
+
+        $(function (){
+
+            var rotateTimeOut = function (){
+
+                $('#rotate').rotate({
+                    angle:0,
+                    animateTo:2160,
+                    duration:8000,
+                    callback:function (){
+                        alert('网络超时，请检查您的网络设置！');
+                    }
+                });
+            };
+            
+            var bRotate = false;
+            var rotateFn = function (awards, angles, txt){
+
+                bRotate = !bRotate;
+
+                $('#rotate').stopRotate();
+                
+                $('#rotate').rotate({
+                    angle:0,
+                    animateTo:angles+1800,
+                    duration:8000,
+                    callback:function (){
+                        alert(txt);
+                        bRotate = !bRotate;
+                    }                    
+                })
+            };
+            $('.pointer, .zc_disk_begin').click(function (){
+
+                if(bRotate)return;
+
+                var item = rnd(0,7);
+
+                switch (item) {
+                    case 0:
+                        rotateFn(0, 340, '网校20元代金券');
+                        break;
+                    case 1:
+                        rotateFn(1, 293, '京东50元代金券');
+                        break;
+                    case 2:
+                        rotateFn(2, 250, '8G金士顿优盘');
+                        break;
+                    case 3:
+                        rotateFn(3, 205, '小米运动手环');
+                        break;
+                    case 4:
+                        rotateFn(4, 155, '京东10元代金券');
+                        break;
+                    case 5:
+                        rotateFn(5, 115, '谢谢参与');
+                        break;
+                    case 6:
+                        rotateFn(6, 65, '网校50元代金券');
+                        break;
+                    case 7:
+                        rotateFn(7, 385, '小米10000mAh移动电源');
+                        break;
+                }
+                console.log(item);
+            });
+        });
+
+        function rnd(n, m){
+            return Math.floor(Math.random()*(m-n+1)+n)
+        }
+
+    </script>
+    <script type="text/javascript">
+    	function autoScroll(obj) {
+
+			$(obj).find("ul").animate({
+
+				marginTop: "-65px"
+
+			},
+			500,
+			function() {
+
+				$(this).css({
+					marginTop: "0px"
+				}).find("li:first").appendTo(this);
+
+			})
+
+		}
+
+    	$(function(){
+
+    		setInterval('autoScroll(".zc_prize_list")', 3000);
+
+    		//赛区选择
+    		$(".zc_tab li").on('click',function(){
+    			var _this=$(this),
+    			index=_this.index();
+    			_this.addClass("tab_li_active").siblings().removeClass("tab_li_active");
+    			$(".zc_content").hide();
+    			$(".zc_content").eq(index).show();
+    		});
+
+    		//排名tab
+    		$(".zc_tab_rank li").on('click',function(){
+    			var _this=$(this),
+    			index=_this.index();
+    			_this.addClass("zc_rank_now").siblings().removeClass("zc_rank_now");
+    			$(".table_01").hide();
+    			$(".table_01").eq(index).show();
+    		});
+
+    		//排名tab
+    		$(".zc_tab_ranks li").on('click',function(){			
+    			var _this=$(this),
+    			index=_this.index();
+    			_this.addClass("zc_rank_now").siblings().removeClass("zc_rank_now");
+    			$(".table_01").hide();
+    			$(".table_01").eq(index).show();
+    		});
+
+    		//滚动
+		      function pinfen_scroll(){
+		        $('.pinfen_scroll').jScrollPane();
+		      }
+		      pinfen_scroll();
+
+		    //地址
+			$(".sel_select").click(function(){
+				var $ul=$(this).next();
+				if($ul.is(":hidden")){
+					$ul.slideDown();
+				}else{
+					$ul.slideUp();
+				}
+			});
+
+
+
+    	});
+
+    </script>
+</head>
+<body>
+	<div class="zc_header">
+		<div class="zc_head">
+			<div class="zc_logo fl">
+				<img src="images/zc_logo.png">
+			</div>
+			<div class="zc_head_info fr">
+				<span>昵称：</span>
+				<div class="zc_user fl">
+					cherry咯咯
+					<img src="images/zc_user_down.png">
+					<ul class="user_down">
+						<li class="active">个人资料</li>
+						<li>我的奖品</li>
+						<li class="exit">退出</li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+				<a class="zc_back_index fl" href="#">返回练习中心</a>
+				<a class="zc_back_zc fl" href="#">返回砖超首页</a>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+
+	<div class="zc_container">
+		<a class="zc_btn_a" href="#">争夺砖王赢iphone6s</a>
+		<div class="zc_tab">
+			<ul>
+				<li  class="tab_li_active">
+					<div>海选赛</div>
+					<p>10月8日-10月22日</p>
+				</li>
+				<li>
+					<div>资格赛</div>
+					<p>10月8日-10月22日</p>
+				</li>
+				<li >
+					<div>淘汰赛</div>
+					<p>10月8日-10月22日</p>
+				</li>
+				<li >
+					<div>半决赛</div>
+					<p>10月8日-10月22日</p>
+				</li>
+				<li >
+					<div>决赛</div>
+					<p>10月8日-10月22日</p>
+				</li>
+				<li class="tab_li_jiang">
+					<div>我的奖品</div>
+					<p><img src="images/zc_my_prize.png"></p>
+				</li>
+			</ul>
+		</div>
+		<!--1-->
+		<div class="zc_content ">
+			<div class="zc_content_main zc-data">
+				<div class="zc_content_title" style="background:#4D7CCA;">
+					<div class="f0">海选赛</div>					
+				</div>	
+				<div class="zc_thed">
+					<div class="b1">时间</div>
+					<div class="b2">奖品</div>
+					<div class="b3">卡号</div>
+					<div class="b4">激活码</div>
+					<div class="b5">备注</div>
+					<div class="b6">有效期</div>
+					
+				</div>	
+				<div class="clear"></div>		
+				<div class="zc_tables pinfen_scroll">
+					<table class="tables_01" cellspacing="0" >
+						<tbody>
+							<tr>
+								<td class="b1">2015年10月15号</td>
+								<td class="b2" style=" color:#fef500;">代金券</td>
+								<td class="b3">wxgj2015</td>
+								<td class="b4">20150315009</td>
+								<td class="b5" style="color:#5df04e;">如何使用</td>
+								<td class="b6">2015年11月9号之前</td>
+							</tr>
+							<tr>
+								<td class="b1">2015年10月15号</td>
+								<td class="b2" style=" color:#fef500;">代金券</td>
+								<td class="b3">wxgj2015</td>
+								<td class="b4">20150315009</td>
+								<td class="b5" style="color:#5df04e;">如何使用</td>
+								<td class="b6">2015年11月9号之前</td>
+							</tr>
+							<tr>
+								<td class="b1">2015年10月15号</td>
+								<td class="b2" style=" color:#fef500;">代金券</td>
+								<td class="b3">wxgj2015</td>
+								<td class="b4">20150315009</td>
+								<td class="b5" style="color:#5df04e;">如何使用</td>
+								<td class="b6">2015年11月9号之前</td>
+							</tr>
+							<tr>
+								<td class="b1">2015年10月15号</td>
+								<td class="b2" style=" color:#fef500;">代金券</td>
+								<td class="b3">wxgj2015</td>
+								<td class="b4">20150315009</td>
+								<td class="b5" style="color:#5df04e;">如何使用</td>
+								<td class="b6">2015年11月9号之前</td>
+							</tr>
+							<tr>
+								<td class="b1">2015年10月15号</td>
+								<td class="b2" style=" color:#fef500;">代金券</td>
+								<td class="b3">wxgj2015</td>
+								<td class="b4">20150315009</td>
+								<td class="b5" style="color:#5df04e;">如何使用</td>
+								<td class="b6">2015年11月9号之前</td>
+							</tr>
+							<tr>
+								<td class="b1">2015年10月15号</td>
+								<td class="b2" style=" color:#fef500;">代金券</td>
+								<td class="b3">wxgj2015</td>
+								<td class="b4">20150315009</td>
+								<td class="b5" style="color:#5df04e;">如何使用</td>
+								<td class="b6">2015年11月9号之前</td>
+							</tr>
+							<tr>
+								<td class="b1">2015年10月15号</td>
+								<td class="b2" style=" color:#fef500;">代金券</td>
+								<td class="b3">wxgj2015</td>
+								<td class="b4">20150315009</td>
+								<td class="b5" style="color:#5df04e;">如何使用</td>
+								<td class="b6">2015年11月9号之前</td>
+							</tr>
+							<tr>
+								<td class="b1">2015年10月15号</td>
+								<td class="b2" style=" color:#fef500;">代金券</td>
+								<td class="b3">wxgj2015</td>
+								<td class="b4">20150315009</td>
+								<td class="b5" style="color:#5df04e;">如何使用</td>
+								<td class="b6">2015年11月9号之前</td>
+							</tr>
+							<tr>
+								<td class="b1">2015年10月15号</td>
+								<td class="b2" style=" color:#fef500;">代金券</td>
+								<td class="b3">wxgj2015</td>
+								<td class="b4">20150315009</td>
+								<td class="b5" style="color:#5df04e;">如何使用</td>
+								<td class="b6">2015年11月9号之前</td>
+							</tr>
+							<tr>
+								<td class="b1">2015年10月15号</td>
+								<td class="b2" style=" color:#fef500;">代金券</td>
+								<td class="b3">wxgj2015</td>
+								<td class="b4">20150315009</td>
+								<td class="b5" style="color:#5df04e;">如何使用</td>
+								<td class="b6">2015年11月9号之前</td>
+							</tr>
+							<tr>
+								<td class="b1">2015年10月15号</td>
+								<td class="b2" style=" color:#fef500;">代金券</td>
+								<td class="b3">wxgj2015</td>
+								<td class="b4">20150315009</td>
+								<td class="b5" style="color:#5df04e;">如何使用</td>
+								<td class="b6">2015年11月9号之前</td>
+							</tr>
+							<tr>
+								<td class="b1">2015年10月15号</td>
+								<td class="b2" style=" color:#fef500;">代金券</td>
+								<td class="b3">wxgj2015</td>
+								<td class="b4">20150315009</td>
+								<td class="b5" style="color:#5df04e;">如何使用</td>
+								<td class="b6">2015年11月9号之前</td>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+			</div>
+			
+			<div class="zc_content_main zc-data">
+				<div class="zc_content_title" style="background:#4D7CCA;">
+					<div class="f0">海选赛</div>					
+				</div>	
+				<div class="zc_thed">
+					<div class="b1" style=" width:155px;">时间</div>
+					<div class="b2" style=" width:360px;">奖品</div>
+					<div class="b3" style=" width:204px;">有效期</div>
+					<div class="b4" style=" width:195px;">领取方式</div>
+				</div>	
+				<div class="clear"></div>		
+				<div class="zc_tables pinfen_scroll">
+					<table class="tables_01" cellspacing="0" >
+						<tbody>
+							<tr>
+								<td style=" width:155px;">2015年10月15号</td>
+								<td style=" width:360px;color:#fef500;">680元《百炼成“公”练题班》直播课程</td>
+								<td style=" width:204px;">2015年11月9号之前</td>
+								<td class="dd" style=" width:195px;">2015年11月9号之前开通，消息提醒</td>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+			</div>
+			<div class="zc_content_main zc-data">
+				<div class="zc_content_title" style="background:#4D7CCA;">
+					<div class="f0">淘汰赛</div>					
+				</div>	
+				<div class="zc_thed">
+					<div class="b1" style=" width:155px;">时间</div>
+					<div class="b2" style=" width:360px;">奖品</div>
+					<div class="b3" style=" width:204px;">有效期</div>
+					<div class="b4" style=" width:195px;">领取方式</div>
+				</div>	
+				<div class="clear"></div>		
+				<div class="zc_tables pinfen_scroll">
+					<table class="tables_01" cellspacing="0" >
+						<tbody>
+							<tr>
+								<td style=" width:155px;">2015年10月15号</td>
+								<td style=" width:360px;color:#fef500;">820元《百炼成“公”练题班》直播课程</td>
+								<td style=" width:204px;">2015年11月9号之前</td>
+								<td class="dd" style=" width:195px;">2015年11月9号之前开通，消息提醒</td>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+			</div>
+			<div class="zc_content_main zc-data">
+				<div class="zc_content_title" style="background:#4D7CCA;">
+					<div class="f0">半决赛</div>					
+				</div>	
+				<div class="zc_thed">
+					<div class="b1" style=" width:155px;">时间</div>
+					<div class="b2" style=" width:360px;">奖品</div>
+					<div class="b3" style=" width:204px;">有效期</div>
+					<div class="b4" style=" width:195px;">领取方式</div>
+				</div>	
+				<div class="clear"></div>		
+				<div class="zc_tables pinfen_scroll">
+					<table class="tables_01" cellspacing="0" >
+						<tbody>
+							<tr>
+								<td style=" width:155px;">2015年10月15号</td>
+								<td style=" width:360px;color:#fef500;">iphone6</td>
+								<td style=" width:204px;">2015年11月9号之前</td>
+								<td class="dd" style=" width:195px;">2015年11月9号之前开通，消息提醒</td>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+			</div>
+			<div class="zc_content_main zc-data">
+				<div class="zc_content_title" style="background:#4D7CCA;">
+					<div class="f0">决赛</div>					
+				</div>	
+				<div class="zc-live">敬请关注现场直播</div>
+			</div>
+		</div>
+		<!--1 end-->
+
+
+
+		<a class="zc_returnTop"></a>
+	</div>
+	<div id="footer">
+	    <div class="footCenter">
+	        <div class="flinks"> 
+	            <a target="_blank" href="#">关于我们</a> | 
+	            <a target="_blank" href="#">联系我们</a> | 
+	            <a target="_blank" href="#">加入我们</a> | 
+	            <a target="_blank" href="#">意见反馈</a> | 
+	            <a target="_blank" href="#">合作加盟</a> | 
+	            <a target="_blank" href="#">媒体关注</a> | 
+	            <a target="_blank" href="#">友情链接</a> | 
+	            <a target="_blank" href="#">网站地图</a> | 
+	            <a target="_blank" href="#">网址导航</a>
+	        </div>
+	        <div class="copyright">
+	        	北京华图宏阳网络科技有限公司 版权所有 京ICP备05066753号-5京ICP证090387号 京公网安备110108002477号<br>
+	            地址：北京市海淀区中关村大街28-1号海淀文化艺术大厦A座2层 邮编100081<br>
+	             Copyright<span style="font-family:Arial;">©</span>2006-2014 v.huatu.com Inc.All Rights Reserved
+	        </div>
+	    </div>
+	</div>
+
+
+
+</body>
+</html>

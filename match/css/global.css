@@ -1,0 +1,128 @@
+﻿@charset "utf-8";
+@charset "utf-8";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a,
+abbr, acronym, address, big, cite, code, del,
+dfn, em, img, ins, kbd, q, s, samp, small,
+strike, strong, sub, sup, tt, var, b, u, i,
+center, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside,
+canvas, details, embed, figure, figcaption,
+footer, header, hgroup, menu, nav, output,
+ruby, section, summary, time, mark, audio,
+video{
+	margin:0;
+	padding:0;
+}
+article, aside, details, figcaption,
+figure, footer, header, hgroup, menu,
+nav, section{
+	display:block;
+}
+html{
+	font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body{
+	font:14px 'Arial', 'Microsoft YaHei';
+	color:#00152f;
+	background-color:#eee;
+	
+}
+ol, ul, li{
+	list-style:none;
+	list-style-type:none;
+}
+table{
+	
+}
+fieldset, img{
+	border:0;
+}
+a{
+	outline:none;
+	blr:expression(this.onFocus=this.blur());
+	color:#666;
+}
+
+del, ins, a{
+	text-decoration:none;
+}
+em, i, s{
+	font-style:normal;
+}
+input, button,
+textarea, select{
+	outline:none;
+}
+textarea{
+	resize:none;
+}
+
+sup{
+	vertical-align:baseline;
+}
+sub{
+	vertical-align:baseline;
+}
+blockquote, q{
+	quotes:none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after{
+	content:'';
+	content:none;
+}
+::selection{
+	background:#39A4DC;
+	color:#FFF;
+}
+::-moz-selection{
+	background:#39A4DC;
+	color:#FFF;
+}
+.clear {
+  clear: both;
+  width: 100%;
+  height: 0px;
+  overflow: hidden;
+}
+.clearfix:after{
+	clear:both;
+	
+	display:block;
+	height:0;
+	visibility:hidden;
+	line-height:0;
+	content:'\20';	
+}
+.clearfix{
+	*display:table;
+	*zoom:1;
+}
+.cb{
+	clear:both;
+	height:0;
+	overflow:hidden;
+}
+.fl{
+	display:inline;
+	float:left;
+}
+.fr{
+	display:inline;
+	float:right;
+}
+.none{	
+	display:none;
+}
+.hidden{
+	overflow:hidden;
+}

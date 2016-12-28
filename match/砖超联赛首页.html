@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>砖超联赛首页</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/global.css"type="text/css" />
+	<link rel="stylesheet" href="css/zc_main.css" type="text/css" />
+	<link rel="stylesheet" href="css/jquery.jscrollpane.css" media="all">
+
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="js/awardRotate.js"></script>
+	<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+	<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+
+	<script>
+
+        $(function (){
+
+            var rotateTimeOut = function (){
+
+                $('#rotate').rotate({
+                    angle:0,
+                    animateTo:2160,
+                    duration:8000,
+                    callback:function (){
+                        alert('网络超时，请检查您的网络设置！');
+                    }
+                });
+            };
+            
+            var bRotate = false;
+            var rotateFn = function (awards, angles, txt){
+
+                bRotate = !bRotate;
+
+                $('#rotate').stopRotate();
+                
+                $('#rotate').rotate({
+                    angle:0,
+                    animateTo:angles+1800,
+                    duration:8000,
+                    callback:function (){
+                        alert(txt);
+                        bRotate = !bRotate;
+                    }                    
+                })
+            };
+            $('.pointer, .zc_disk_begin').click(function (){
+
+                if(bRotate)return;
+
+                var item = rnd(0,7);
+
+                switch (item) {
+                    case 0:
+                        rotateFn(0, 340, '网校20元代金券');
+                        break;
+                    case 1:
+                        rotateFn(1, 293, '京东50元代金券');
+                        break;
+                    case 2:
+                        rotateFn(2, 250, '8G金士顿优盘');
+                        break;
+                    case 3:
+                        rotateFn(3, 205, '小米运动手环');
+                        break;
+                    case 4:
+                        rotateFn(4, 155, '京东10元代金券');
+                        break;
+                    case 5:
+                        rotateFn(5, 115, '谢谢参与');
+                        break;
+                    case 6:
+                        rotateFn(6, 65, '网校50元代金券');
+                        break;
+                    case 7:
+                        rotateFn(7, 385, '小米10000mAh移动电源');
+                        break;
+                }
+                console.log(item);
+            });
+        });
+
+        function rnd(n, m){
+            return Math.floor(Math.random()*(m-n+1)+n)
+        }
+
+    </script>
+    <script type="text/javascript">
+    	//右侧文字滚动
+    	function autoScroll(obj) {
+
+			$(obj).find("ul").animate({
+
+				marginTop: "-65px"
+
+			},
+			500,
+			function() {
+
+				$(this).css({
+					marginTop: "0px"
+				}).find("li:first").appendTo(this);
+
+			})
+
+		}
+
+
+    	$(function(){
+
+    		setInterval('autoScroll(".zc_prize_list")', 3000);
+
+    		//赛区选择
+    		$(".zc_tab li").on('click',function(){
+    			var _this=$(this),
+    			index=_this.index();
+    			_this.addClass("tab_li_active").siblings().removeClass("tab_li_active");
+    			$(".zc_content").hide();
+    			$(".zc_content").eq(index).show();
+    		});
+
+    		//排名tab
+    		$(".zc_tab_rank li").on('click',function(){
+    			var _this=$(this),
+    			index=_this.index();
+    			_this.addClass("zc_rank_now").siblings().removeClass("zc_rank_now");
+    			$(".table_01").hide();
+    			$(".table_01").eq(index).show();
+    		});
+
+    		//排名tab
+    		$(".zc_tab_ranks li").on('click',function(){			
+    			var _this=$(this),
+    			index=_this.index();
+    			_this.addClass("zc_rank_now").siblings().removeClass("zc_rank_now");
+    			$(".table_01").hide();
+    			$(".table_01").eq(index).show();
+    		});
+
+    		//滚动
+		    $('#pinfen_scroll').jScrollPane();
+
+		    //地址
+			$(".sel_select").click(function(){
+				var $ul=$(this).next();
+				if($ul.is(":hidden")){
+					$ul.slideDown();
+				}else{
+					$ul.slideUp();
+				}
+			});
+
+			$(".zc_user").hover(function(){
+				$(".user_down").show();
+			},function(){
+				$(".user_down").hide();
+			});
+			
+			
+
+    	});
+
+    </script>
+</head>
+<body>
+
+	<div class="zc_header">
+		<div class="zc_head">
+			<div class="zc_logo fl">
+				<img src="images/zc_logo.png">
+			</div>
+			<div class="zc_head_info fr">
+				<span>昵称：</span>
+				<div class="zc_user fl">
+					<div>cherry咯咯</div>
+					<img src="images/zc_user_down.png">
+					<ul class="user_down">
+						<li class="active">个人资料</li>
+						<li>我的奖品</li>
+						<li class="exit">退出</li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+				<a class="zc_back_index fl" href="#">返回练习中心</a>
+				<a class="zc_back_zc fl" href="#">返回砖超首页</a>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+
+
+	<div class="zc_container">
+		<a class="zc_btn_a" href="#">争夺砖王赢iphone6s</a>
+		<div class="zc_tab">
+			<ul>
+				<li  class="tab_li_active">
+					<div>海选赛</div>
+					<p>10月8日-10月22日</p>
+				</li>
+				<li>
+					<div>资格赛</div>
+					<p>10月8日-10月22日</p>
+				</li>
+				<li >
+					<div>淘汰赛</div>
+					<p>10月8日-10月22日</p>
+				</li>
+				<li >
+					<div>半决赛</div>
+					<p>10月8日-10月22日</p>
+				</li>
+				<li >
+					<div>决赛</div>
+					<p>10月8日-10月22日</p>
+				</li>
+				<li class="tab_li_jiang">
+					<div>我的奖品</div>
+					<p><img src="images/zc_my_prize.png"></p>
+				</li>
+			</ul>
+		</div>
+
+		<!--1-->
+		<div class="zc_content ">
+			<div class="zc_content_title">
+				<div class="f0">海选赛区</div>
+				<div class="zc_content_info">
+					<div class="zc_details">
+						<p>10月8号战况：通过&nbsp;<span>0</span>&nbsp;次&nbsp;&nbsp;&nbsp;摇奖&nbsp;<span>0</span>&nbsp;次</p>
+						<div class="zc_info_time">
+							剩余14天
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<div class="zc_content_main">
+				<h3>10月9日0：00更新下一场海选</h3>
+				<div class="zc_number_one">
+					<a class="zc_report01">查看报告</a>
+					<span>第一场</span>
+					<img src="images/zc_no_pass.png">
+				</div>
+				<div class="zc_number_one">
+					<a class="zc_report02">查看报告</a>
+					<span>第二场</span>
+					<img src="images/zc_pass.png">
+				</div>
+				<div class="zc_number_one fn">
+					<a class="zc_report03">进入答题</a>
+					<span>第三场</span>
+				</div>
+			</div>
+			
+			<div class="zc_content_main f2">
+				<div class="zc_content_title">
+					<div class="f0 f1">幸运转盘大抽</div>				
+				</div>
+				<div class="zc_con_area">
+					<div class="zc_con_left fl">
+						<div class="disk">
+							<div class="pointer"><img src="images/zc_zhizhen_02.png" alt="pointer"></div>
+							<div class="rotate"><img id="rotate" src="images/zc_disk.png" alt="turntable"></div>
+						</div>
+						<p>您还有<span>0</span>次抽奖机会</p>
+						<a class="zc_disk_begin" href="javascript:void(0);">开始抽奖</a>
+					</div>
+					<div class="zc_con_right fr">
+						<h4>大奖公布</h4>
+						<div class="zc_prize_list">
+							<ul>
+								<li class="zc_prize_info" >
+									<img class="fl" src="images/zc_jiangpin.png">
+									<div class="fr">昵称：sherry1001</div>
+									<div class="fr">获得<span>网校20元代金券</span>一张</div>
+									<div class="clear"></div>
+								</li>
+								<li class="zc_prize_info" >
+									<img class="fl" src="images/zc_jiangpin.png">
+									<div class="fr">昵称：sherry1002</div>
+									<div class="fr">获得<span>网校20元代金券</span>一张</div>
+									<div class="clear"></div>
+								</li>
+								<li class="zc_prize_info" >
+									<img class="fl" src="images/zc_jiangpin.png">
+									<div class="fr">昵称：sherry1003</div>
+									<div class="fr">获得<span>网校20元代金券</span>一张</div>
+									<div class="clear"></div>
+								</li>
+								<li class="zc_prize_info" >
+									<img class="fl" src="images/zc_jiangpin.png">
+									<div class="fr">昵称：sherry1004</div>
+									<div class="fr">获得<span>网校20元代金券</span>一张</div>
+									<div class="clear"></div>
+								</li>
+								<li class="zc_prize_info" >
+									<img class="fl" src="images/zc_jiangpin.png">
+									<div class="fr">昵称：sherry1005</div>
+									<div class="fr">获得<span>网校20元代金券</span>一张</div>
+									<div class="clear"></div>
+								</li>
+								<li class="zc_prize_info" >
+									<img class="fl" src="images/zc_jiangpin.png">
+									<div class="fr">昵称：sherry1006</div>
+									<div class="fr">获得<span>网校20元代金券</span>一张</div>
+									<div class="clear"></div>
+								</li>
+								<li class="zc_prize_info" >
+									<img class="fl" src="images/zc_jiangpin.png">
+									<div class="fr">昵称：sherry1007</div>
+									<div class="fr">获得<span>网校20元代金券</span>一张</div>
+									<div class="clear"></div>
+								</li>
+								<li class="zc_prize_info" >
+									<img class="fl" src="images/zc_jiangpin.png">
+									<div class="fr">昵称：sherry1008</div>
+									<div class="fr">获得<span>网校20元代金券</span>一张</div>
+									<div class="clear"></div>
+								</li>
+								<li class="zc_prize_info" >
+									<img class="fl" src="images/zc_jiangpin.png">
+									<div class="fr">昵称：sherry1009</div>
+									<div class="fr">获得<span>网校20元代金券</span>一张</div>
+									<div class="clear"></div>
+								</li>
+								<li class="zc_prize_info" >
+									<img class="fl" src="images/zc_jiangpin.png">
+									<div class="fr">昵称：sherry1010</div>
+									<div class="fr">获得<span>网校20元代金券</span>一张</div>
+									<div class="clear"></div>
+								</li>
+								<li class="zc_prize_info" >
+									<img class="fl" src="images/zc_jiangpin.png">
+									<div class="fr">昵称：sherry1011</div>
+									<div class="fr">获得<span>网校20元代金券</span>一张</div>
+									<div class="clear"></div>
+								</li>
+								<li class="zc_prize_info" >
+									<img class="fl" src="images/zc_jiangpin.png">
+									<div class="fr">昵称：sherry1012</div>
+									<div class="fr">获得<span>网校20元代金券</span>一张</div>
+									<div class="clear"></div>
+								</li>
+								<li class="zc_prize_info" >
+									<img class="fl" src="images/zc_jiangpin.png">
+									<div class="fr">昵称：sherry1013</div>
+									<div class="fr">获得<span>网校20元代金券</span>一张</div>
+									<div class="clear"></div>
+								</li>
+							</ul>	
+							<div class="clear"></div>					
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			
+			<div class="zc_content_main">
+				<div class="zc_content_title">
+					<div class="f0">海选赛</div>
+					<p>显示前30名，前10名有50元代金券送哦！您的排名第<span>285</span>名</p>
+				</div>
+				<div class="zc_tab_rank">
+					<ul>
+						<li class="zc_rank_now">今日排名</li>
+						<li>总排名</li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+				<div class="zc_table " id="pinfen_scroll">
+					<table class="table_01" cellspacing="0" >
+						<thead>
+							<tr>
+								<th class="a1">名次</th>
+								<th class="a2">考生</th>
+								<th class="a3">答对题数</th>
+								<th class="a4">答题用时</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="zc_tr">
+								<td class="b1">1</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">2</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">3</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">4</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">5</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">6</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">7</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">8</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">9</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">10</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">11</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">12</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table_01 none" cellspacing="0" >
+						<thead>
+							<tr>
+								<th class="a1">名次</th>
+								<th class="a2">考生</th>
+								<th class="a3">答对题数</th>
+								<th class="a4">答题用时</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="zc_tr">
+								<td class="b1">1</td>
+								<td>我爱小骨</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">2</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">3</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">4</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">5</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">6</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">7</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">8</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">9</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">10</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">11</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+							<tr>
+								<td class="b1">12</td>
+								<td>我爱小骨思密达</td>
+								<td>115题</td>
+								<td>2&nbsp;&nbsp;'33</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		
+			<div class="zc_content_main f4">
+				<div class="zc_content_title f3">
+					<div class="f0">赛制解读</div>
+				</div>
+				<div class="zc_rule">
+					<div>任务：</div>
+					<p>通过海选</p>
+					<div>规则：</div>
+					<p>1.参加砖超联赛参赛选手先要注册参加海选，已经注册过砖题库的用户无需重新注册；<br>
+					   2.海选考试，计时30分钟，共30题，有专用海选考试区，每天任意时段均可参加；<br>
+					   3.15天海选期间，可以重复参加考试，每天三次机会，系统随机抽屉；<br>
+					   4.任意一次考试做对15题以上（含15题），即可通过海选；<br>
+					   5.电脑、手机端均可。<br>
+					   6.海选结束之后发出整套模块卷，保证场外持续关注度。（无奖品）<br>
+					</p>
+					<div>奖励：</div>
+					<p>1.拼实力：海选期间，每天累计做对题目最多的前10名选手，可获得京东20元购物券一张<br>
+					   2.拼运气：通过一次海选，可获得一次抽奖机会，点击抽奖可以随机获得以下的奖品的其中之一：网校50元课程代金券（不限数量）、网校20元课程代金券（不限数量）、京东50元购物券（每天2个）、京东10元购物券（每天25张）、小米运动手环（每天一个）、小米移动电源（每天2个）、8G金士顿优盘（每天2个）、砖题库价值100元直播课<br>
+					   3.海选期间，按答题数量排名，<span>前100可获得砖题库直播课程（待定）</span><br>
+					   4.海选期间，按答题数量排名，前3名可获得亚马逊Kindle一台；（如做对题目数量相同，则按答题平均速度排名）。<br>
+					</p>
+					<div>领奖：</div>
+					<p>
+						1.网校代金券：点击抽奖后即可立即获得卡号和密码，点击“如何使用”可以查看使用方法<br>
+						2.实物奖项：每天砖超首页、砖题库微博、微信会公布获奖名单；当获奖参赛选手确认自己获奖后，请在新浪微博公布自己获奖并@砖题库，华图网校核实并寄出奖品。<br>
+						3.购物券：获奖者可以得到优惠吗，跳转到相应网站查看使用方法<br>
+					</p>
+					<div>其他：</div>
+					<p>
+						1.每日名单。海选当天结束，次日公布获奖名单；<br>
+						2.10月23日（海选结束之后次日）公布整个海选期间获奖名单；<br>
+					</p>
+				</div>			
+			</div>
+		</div>
+		<!--1 end-->
+
+		<!-- <a class="zc_returnTop"></a> -->
+	</div>
+	<div id="footer">
+	    <div class="footCenter">
+	        <div class="flinks"> 
+	            <a target="_blank" href="#">关于我们</a> | 
+	            <a target="_blank" href="#">联系我们</a> | 
+	            <a target="_blank" href="#">加入我们</a> | 
+	            <a target="_blank" href="#">意见反馈</a> | 
+	            <a target="_blank" href="#">合作加盟</a> | 
+	            <a target="_blank" href="#">媒体关注</a> | 
+	            <a target="_blank" href="#">友情链接</a> | 
+	            <a target="_blank" href="#">网站地图</a> | 
+	            <a target="_blank" href="#">网址导航</a>
+	        </div>
+	        <div class="copyright">
+	        	北京华图宏阳网络科技有限公司 版权所有 京ICP备05066753号-5京ICP证090387号 京公网安备110108002477号<br>
+	            地址：北京市海淀区中关村大街28-1号海淀文化艺术大厦A座2层 邮编100081<br>
+	             Copyright<span style="font-family:Arial;">©</span>2006-2014 v.huatu.com Inc.All Rights Reserved
+	        </div>
+	    </div>
+	</div>
+
+
+
+	<!--弹出层-->
+	<div class="zc_cover_bg none"></div>
+	
+	<!--收货地址-->
+	<div class="zc_modle none">
+		<h4>收货地址</h4>
+		<p>请如实填写以下的收货信息，以便我们尽快给您寄送资料。</p>
+		<div id="form">
+			<img src="images/zc_cancel.png">
+			<div class="form_inp clearfix">
+				<span>收货人：</span>
+				<input class="form_person" type="text">
+			</div>
+			<div class="form_inp clearfix">
+				<span>手机号码：</span>
+				<input class="form_phone" type="text">
+			</div>
+			<div class="form_inp clearfix">
+				<span>地区：</span>
+				<div class="f_sel">
+					<div class="sel_select sel_sheng">直辖市/省</div>
+					<ul class="clearfix none">
+						<li class="ti_selected_li">湖北省</li>
+						<li>湖北省</li>
+						<li>湖北省</li>
+						<li>湖北省</li>
+						<li>湖北省</li>
+						<li>湖北省</li>
+						<li>湖北省</li>
+						<li>湖北省</li>
+						<li>湖北省</li>
+						<li>湖北省</li>
+						<li>湖北省</li>
+						<li>湖北省</li>
+						<li>湖北省</li>
+					</ul>
+				</div>
+				<div class="f_sel">
+					<div class="sel_select sel_shi">市</div>
+					<ul class="clearfix none">
+						<li class="ti_selected_li">武汉市</li>
+						<li>武汉市</li>
+						<li>武汉市</li>
+						<li>武汉市</li>
+					</ul>
+				</div>
+				<div class="f_sel">
+					<div class="sel_select sel_qu">县/区</div>
+					<ul class="clearfix none">
+						<li class="ti_selected_li">武昌区</li>
+						<li>武昌区</li>
+						<li>武昌区</li>
+						<li>武昌区</li>
+					</ul>
+				</div>
+			</div>
+			<div class="form_inp clearfix">
+				<span>街道地址：</span>
+				<input class="form_address" type="text">
+			</div>
+			<a href="#" class="zc_next">下一步</a>
+		</div>
+	</div>
+
+	<div class="zc_model1 none">
+		<img src="images/zc_cancel.png">
+		<p>恭喜您，获得<span>小米手环</span>一个！</p>
+		<a class="zc_fill" href="#">填写邮件信息</a>
+	</div>
+	
+	<div class="zc_model1 none">
+		<img src="images/zc_cancel.png">
+		<p>恭喜您，获得<span>京东30元购物券</span>一张！</p>
+		<a class="zc_fill" href="#">分享获奖</a>
+	</div>
+
+	<div class="zc_model1 none">
+		<img src="images/zc_cancel.png">
+		<p>很遗憾，你没有抽到奖品，谢谢参与！</p>
+		<a class="zc_fill" href="#">下次再试</a>
+	</div>
+
+	<div class="zc_model1 none">
+		<img src="images/zc_cancel.png">
+		<p>提交成功！立即分享获奖心情！</p>
+		<a class="zc_fill" href="#">分享获奖</a>
+	</div>
+
+	<div class="zc_model1 none">
+		<img src="images/zc_cancel.png">
+		<p>起个响亮的名字，排行榜上更闪耀！</p>
+		<input class="name" type="text"  placeholder="我是砖王"/>
+		<a class="zc_fill" href="#">分享获奖</a>
+	</div>
+<script type="text/javascript">
+	$(function(){
+		gotop();
+	});
+
+
+	function gotop(){
+		$('<a href="#" id="retop" title="回到顶部"></a>').appendTo('body').click(function(){
+			$('body,html').animate({scrollTop:0+'px'},200);
+			return false;
+		});
+		$('#retop').addClass("returnTop");
+	    var $retop=$('#retop');
+	    function backTopLeft(){
+	        var btLeft=$(window).width()/2+500;
+	        if(btLeft<=980){
+	            $retop.css({'left':980});
+	        }else{
+	            $retop.css({'left':btLeft});
+	        }
+	    };
+	    backTopLeft();
+	    $(window).resize(backTopLeft);
+	    $(window).scroll(function(){
+	        if($(document).scrollTop()<500){
+	            $retop.fadeOut();
+	        }else{
+	            $retop.fadeIn();
+	        }
+	    });
+	}
+
+</script>
+</body>
+</html>

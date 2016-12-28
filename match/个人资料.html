@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>个人资料</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/global.css"type="text/css" />
+	<link rel="stylesheet" href="css/zc_main.css" type="text/css" />
+
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$(".zc_user").hover(function(){
+			$(".user_down").show();
+		},function(){
+			$(".user_down").hide();
+		});
+		//地址
+		$(".sel_select").click(function(){
+			var $ul=$(this).next();
+			if($ul.is(":hidden")){
+				$ul.slideDown();
+			}else{
+				$ul.slideUp();
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+	<div class="zc_header">
+		<div class="zc_head">
+			<div class="zc_logo fl">
+				<img src="images/zc_logo.png">
+			</div>
+			<div class="zc_head_info fr">
+				<span>昵称：</span>
+				<div class="zc_user fl">
+					cherry咯咯
+					<img src="images/zc_user_down.png">
+					<ul class="user_down">
+						<li class="active">个人资料</li>
+						<li>我的奖品</li>
+						<li class="exit">退出</li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+				<a class="zc_back_index fl" href="#">返回练习中心</a>
+				<a class="zc_back_zc fl" href="#">返回砖超首页</a>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+
+	<div class="zc_container">
+		<a class="zc_btn_a" href="#">争夺砖王赢iphone6s</a>
+		<!--已填写-->
+		<div class="zc_content none">
+			<h4>个人资料</h4>
+			<div class="zc_personal">
+				<p>
+					<label>用户名：</label><span>htjyl691</span>
+				</p>
+				<p>
+					<label>昵称：</label><span>馒头宝贝</span>
+				</p>
+				<p>
+					<label>收件人：</label><span>李明</span>
+				</p>
+				<p>
+					<label>手机号：</label><span>15623654856</span>
+				</p>
+				<p>
+					<label>邮箱：</label><span>123546523@qq.com</span>
+				</p>
+				<p>
+					<label>邮寄地址：</label><span>湖北省武汉市珞狮南路115号狮城公寓6-1-28</span>
+				</p>
+			</div>
+		</div>
+
+		<!--未填写-->
+		<div class="zc_content ">
+			<h4>个人资料</h4>
+			<div class="zc_personal">
+				<div class="zc_select">
+					<label>用户名：</label><span>htjyl691</span>
+				</div>
+				<div class="zc_select">
+					<label>昵称：</label><span>馒头宝贝</span>
+				</div>
+				<div class="zc_select">
+					<label>收件人：</label><input type="text" placeholder="李明"/>
+				</div>
+				<div class="zc_select">
+					<label>手机号：</label><input type="text" placeholder="15623654856"/>
+				</div>
+				<div class="zc_select">
+					<label>邮箱：</label><input type="text" placeholder="123546523@qq.com"/>
+				</div>
+				<div class="zc_select clearfix">
+					<label>邮寄地址：</label>
+					<div class="f_sel">
+						<div class="sel_select sel_shi">市</div>
+						<ul class="clearfix none">
+							<li class="ti_selected_li">武汉市</li>
+							<li>武汉市</li>
+							<li>武汉市</li>
+							<li>武汉市</li>
+						</ul>
+					</div>
+					<div class="f_sel" style="margin-right:0;">
+						<div class="sel_select sel_qu">县/区</div>
+						<ul class="clearfix none">
+							<li class="ti_selected_li">武昌区</li>
+							<li>武昌区</li>
+							<li>武昌区</li>
+							<li>武昌区</li>
+						</ul>
+					</div>
+				</div>
+				<div class="zc_select">
+					<label></label>
+					<input type="text" placeholder="街道地址"/>
+				</div>
+				<a class="zc_save" href="#">保存</a>
+			</div>
+		</div>
+
+
+	</div>
+</body>
+</html>
